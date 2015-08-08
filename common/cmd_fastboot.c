@@ -1886,8 +1886,7 @@ int do_booti(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
             blocks = DIV_ROUND_UP(hdr->ramdisk_size, blksz);
             if (StorageReadLba(sector, (void *) hdr->ramdisk_addr, \
                         blocks) != 0) {
-                FBTERR("booti: failed to read ramdisk\n");
-                goto fail;
+                printf("booti: no ramdisk supplied, continue without ramdisk\n");
             }
         }
     } else {
